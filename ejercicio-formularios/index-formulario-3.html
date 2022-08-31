@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Primer formulario</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script type="text/javascript" src="js/funciones.js"></script>
+</head>
+<body>
+
+
+
+	<!--name: el nombre del formulario
+		action: indica "hacia" qué página enviamos la informacion del formulario ej. codigo php
+		method: indica mediante que metodo enviamos GET o POST
+		for: para asociar el label con la id del input
+	 ¡-->
+	<form name="formulario" action="ejecutar_codigo.php" method="post" onSubmit="return validar(this);" id="miformulario">
+		
+			
+		<!--(BUSCADOR para cuando hay muchos campos e información)
+
+		<label for="mibuscador">Buscador</label>
+		<input type="search" name="buscador" form="miformulario">-->
+		
+
+			<!--tabindex, si se pone en otro que no sea el primero no permite acceder con el tabulador
+
+				campos ocultos ej. <input type="hidden" value="10:20" name="hora">
+
+				atributo "aceppt" es para decirle al navegador que tenga en cuanta el tipo de archivo que se puede adjuntar pero no hace nada mas-->		
+<div>
+	<!--ENCTYPE:
+	application/x-www-form-urlencoded: Se codifican todos los caracteres convirtiendo los espacios en blanco en ‘+’ y los demás caracteres especiales se convierten en valores hexadecimales ASCII.
+multipart/form-data: No se codifican los caracteres, y solo se usa cuando el formulario envía/sube ficheros al servidor.
+text/plain: Sólamente se convierten ls espacios en blanco en caracteres ‘+’.-->
+		<label for="mitexto" >Usuario:</label>
+
+		<input type="text" id="mitexto" placeholder="Escribe tu nombre"  pattern="[a-z]{1,15}" title="Escribe solo en minúsculas y no más de 15 caracteres" />
+</div>
+
+
+
+<!-- min y max indica al enviar que debe ser inferior a 30-->
+<div>
+		<label for="telefono" >Teléfono:</label>
+		<input type="number"  id="telefono" placeholder="telefono" min="2" max="30" />
+
+</div>
+
+   <!-- Nombre de usuario. Obligatorio, entre 5-40 carácteres -->
+    Usuario:
+    <input type="text" name="nombre" placeholder="Por ejemplo, Juan"
+           minlength="5" maxlength="40" required />
+    <!-- Contraseña. Obligatorio, mínimo 11 carácteres -->
+    Password:
+    <input type="password" name="pass" placeholder="Contraseña"
+           minlength="11" required />
+
+          <!--
+CSS PARA MOSTRAR SI ES VALIDO O NO
+          input:valid,
+textarea:valid {
+    background: green;
+}
+
+input:invalid,
+textarea:invalid {
+    background: red;
+} -->
+
+<!--
+	https://lenguajehtml.com/html/formularios/validaciones-html5/
+Expresión regular		Carácter especial	Significado	Descripción
+-------------------------------------------------------------------------
+.	      	Punto		Comodín	Cualquier 	carácter (o texto de tamaño 1)
+A|B			Pipe		Opciones lógicas	Opciones alternativas (o A o B )
+C(A|B)		Paréntesis	Agrupaciones		Agrupaciones alternativas (o CA o CB )
+[0-9]		Corchetes	Rangos de carácteres	Un dígito (del 0 al 9 )
+[A-Z]			Una letra mayúscula de la A a la Z
+[^A-Z]		^ en corchetes	Rango de exclusión	Una letra que no sea mayúscula de la A a la Z
+[0-9]*		Asterisco	Cierre o clausura	Un dígito repetido 0 ó más veces (vacío incluido)
+[0-9]+		Signo más	Cierre positivo	Un dígito repetido 1 ó más veces
+[0-9]{3}	Llaves	Coincidencia exacta	Cifra de 3 dígitos (dígito repetido 3 veces)
+[0-9]{2,4}		Coincidencia (rango)	Cifra de 2 a 4 dígitos (rep. de 2 a 4 veces)
+b?			Interrogación	Carácter opcional	El carácter b puede aparecer o puede que no
+\.			Barra invertida	Escape	El carácter . literalmente (no como comodín)
+
+
+     Modelo de coche. Obligatorio, opciones posibles: A1, A3, A4 y A15
+       Sólo se permiten letras y números -->
+    <input type="text" name="coche" placeholder="Su modelo de coche"
+           required pattern="A|a(1|3|4|15)"
+           title="Modelos posibles: A1, A3, A4 y A15" />
+
+<div>
+		<label for="email" >Email:</label>
+		<input type="email"  id="email" placeholder="Email" multiple="multiple" />
+
+</div>
+
+<div>
+		<label for="numeros" >Número max 30:</label>
+		<input type="number"  id="numeros" placeholder="numero menor de 30" min="1" max="30" step="3" />
+
+</div>
+<div>
+
+		<label for="color" >Color:</label>
+
+		<input type="color" name="color" id="color">
+</div>
+<div>
+
+		<label for="rango" >Rango:</label>
+
+		<input type="range" name="edad" id="rango" min="18" max="99" step="1" value="30">
+</div>
+<div>
+
+		<label for="fecha" >Fecha:</label>	
+
+		<input type="date" name="fecha" id="fecha" >
+</div>
+
+<div>		
+		<label for="pass">Contraseña</label>
+		<input type="password" id="pass" placeholder="Escribe tu contraseña"  required="required" autofocus="autofocus" />
+</div>		
+
+<div>					
+		<label for="miarea">Observaciones</label>
+		<textarea name="miarea" id="miarea" cols="30" rows="10"  maxlength="20"></textarea>
+</div>		
+
+		<fieldset>
+			<legend>Indica tu grupo de edad con RADIO BUTTON</legend>
+			<label for="primero">Menor de 18</label>
+			<input type="radio" name="edades" id="primero" />
+
+			<label for="segundo">18-65</label>
+			<input type="radio" name="edades" id="segundo" checked="checked" />
+
+			<label for="tercero">Mayor de 65</label>
+			<input type="radio" name="edades" id="tercero" />
+		</fieldset>
+		
+
+		<fieldset>
+			<legend>Indica tu grupo de edad con CHECKBOX</legend>
+			<label for="primero">Menor de 18</label>
+			<input type="checkbox" name="edades" id="primero" />
+
+			<label for="segundo">18-65</label>
+			<input type="checkbox" name="edades" id="segundo" checked="checked" />
+
+			<label for="tercero">Mayor de 65</label>
+			<input type="checkbox" name="edades" id="tercero" />
+		</fieldset>
+		
+
+		<!--selección de opciones con un LABEL e input del tipo SELECT con opciones-->
+		<fieldset>
+			<legend>Opciones</legend>
+			<label for="misopciones">Seleccionar</label>
+			<select name="opciones" id="misopciones">
+				<option value="opcion1">Opción 1</option>
+				<option value="opcion2">Opción 2</option>
+				<option value="opcion3">Opción 3</option>
+			</select>
+		</fieldset>
+		
+
+		<!--selección de opciones con un LABEL e input del tipo SELECT con opciones pero "dentro" de grupos , tipo categorías y subcategorías NOTA:" ESTO NO ES PARA MENUS, ES PARA "TAXONOMIAS"-->
+		<fieldset>
+			<legend>Opciones por número y letras</legend>
+
+			<label for="misopciones">Opciones</label>
+			<select name="opciones" id="misopciones" >
+				<optgroup label="Números">
+					<option value="opcion1">Opción 1</option>
+					<option value="opcion2">Opción 2</option>
+					<option value="opcion3">Opción 3</option>
+					<option value="opcion4">Opción 4</option>
+					<option value="opcion5">Opción 5</option>
+				</optgroup>
+
+				<optgroup label="Alfabeto">
+					<option value="opcionA">Opción A</option>
+					<option value="opcionB">Opción B</option>
+					<option value="opcionC">Opción C</option>
+					<option value="opcionD">Opción D</option>
+					<option value="opcionE">Opción E</option>
+				</optgroup>
+			</select>
+
+		</fieldset>
+
+		<label for="foto">Sube un archivo:</label>
+	    <input type="file" name="archivosubido" id="foto">
+	    
+
+
+		<input type="submit" name="enviar" value="Enviar"  class="boton">
+		<!-- SUBMIT on con action alternativa a la de form (hacia gmail) y con target_blank SOLO SE VE SI SE PROCESA EN OTRA PAGINA NUEVA-->
+		<input type="submit" formaction="mailto:cursohuetor29@gmail.com" value="Nuevo action por atributo" formtarget="_blank">
+
+		<input type="reset" name="borrar" value="Eliminar" class="boton">
+
+		<input type="image" name="enviar" src="playa.jpg" width="70px" height="auto" class="boton">
+
+		<input type="button" name="boton" value="Botón"  onclick="javascript:alert('Has hecho click con el botón');" class="boton">
+		
+		<input type="button" name="boton" value="Botón"  onmousedown="javascript:alert('Has pulsado el botón con mouse');" class="boton">
+		
+		<input type="button" name="boton" value="Botón"  ondblclick="javascript:alert('Has pulsado el botón doble click');" class="boton">
+
+		
+<!-- La datalist con id 'listas' y sus diferentes valores -->
+ 
+Escribe un color (Azul, rojo, amarrillo, negro, verde): 
+<datalist id="listas">
+    <option value="azul">
+    <option value="rojo">
+    <option value="amarillo">
+    <option value="negro">
+    <option value="verde">
+</datalist>
+<!-- Asociamos al input la datalist 'listas' -->
+    <input name="color" list="listas">
+    
+
+	
+		
+
+
+
+
+
+		<!--<fieldset>
+			<legend>Varios con jquery</legend>
+		<label for="mideslizador">Edad</label>
+		<input type="range" name="deslizador" id="mideslizador" value="25" min="18" max="90" />
+		
+
+		<select name="interruptor" id="miinterruptor">
+		<option value="off">off</option>
+		<option value="on">on</option>
+		</select>
+		</fieldset>
+		-->
+	</form>
+
+
+
+</body>
+</html>

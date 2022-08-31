@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Primer formulario</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script type="text/javascript" src="js/funciones.js"></script>
+</head>
+<body>
+
+
+
+	<!--name: el nombre del formulario
+		action: indica "hacia" qué página enviamos la informacion del formulario ej. codigo php
+		method: indica mediante que metodo enviamos GET o POST
+		for: para asociar el label con la id del input
+	 ¡-->
+	<form name="formulario" action="ejecutar_codigo.php" method="post" onSubmit="return validar(this);" id="miformulario">
+		
+			
+		<!--(BUSCADOR para cuando hay muchos campos e información)
+
+		<label for="mibuscador">Buscador</label>
+		<input type="search" name="buscador" form="miformulario">-->
+		
+
+			<!--tabindex, si se pone en otro que no sea el primero no permite acceder con el tabulador
+
+				campos ocultos ej. <input type="hidden" value="10:20" name="hora">
+
+				atributo "aceppt" es para decirle al navegador que tenga en cuanta el tipo de archivo que se puede adjuntar pero no hace nada mas-->		
+<div>
+
+		<label for="mitexto" >Usuario:</label>
+
+		<input type="text" id="mitexto" placeholder="Escribe tu nombre"  pattern="[a-z]{1,15}" title="Escribe solo en minúsculas y no más de 15 caracteres" />
+</div>
+<div>
+		<label for="telefono" >Teléfono:</label>
+		<input type="number"  id="telefono" placeholder="telefono" />
+
+</div>
+<div>
+
+		<label for="color" >Color:</label>
+
+		<input type="color" name="color" id="color">
+</div>
+<div>
+
+		<label for="rango" >Rango:</label>
+
+		<input type="range" name="edad" id="rango" min="18" max="99" step="1" value="30">
+</div>
+<div>
+
+		<label for="fecha" >Fecha:</label>	
+
+		<input type="date" name="fecha" id="fecha" >
+</div>
+
+<div>		
+		<label for="pass">Contraseña</label>
+		<input type="password" id="pass" placeholder="Escribe tu contraseña"  required="required" autofocus="autofocus" />
+</div>		
+
+<div>					
+		<label for="miarea">Observaciones</label>
+		<textarea name="miarea" id="miarea" cols="30" rows="10"  maxlength="20"></textarea>
+</div>		
+
+		<fieldset>
+			<legend>Indica tu grupo de edad con RADIO BUTTON</legend>
+			<label for="primero">Menor de 18</label>
+			<input type="radio" name="edades" id="primero" />
+
+			<label for="segundo">18-65</label>
+			<input type="radio" name="edades" id="segundo" checked="checked" />
+
+			<label for="tercero">Mayor de 65</label>
+			<input type="radio" name="edades" id="tercero" />
+		</fieldset>
+		
+
+		<fieldset>
+			<legend>Indica tu grupo de edad con CHECKBOX</legend>
+			<label for="primero">Menor de 18</label>
+			<input type="checkbox" name="edades" id="primero" />
+
+			<label for="segundo">18-65</label>
+			<input type="checkbox" name="edades" id="segundo" checked="checked" />
+
+			<label for="tercero">Mayor de 65</label>
+			<input type="checkbox" name="edades" id="tercero" />
+		</fieldset>
+		
+
+		<!--selección de opciones con un LABEL e input del tipo SELECT con opciones-->
+		<fieldset>
+			<legend>Opciones</legend>
+			<label for="misopciones">Seleccionar</label>
+			<select name="opciones" id="misopciones">
+				<option value="opcion1">Opción 1</option>
+				<option value="opcion2">Opción 2</option>
+				<option value="opcion3">Opción 3</option>
+			</select>
+		</fieldset>
+		
+
+		<!--selección de opciones con un LABEL e input del tipo SELECT con opciones pero "dentro" de grupos , tipo categorías y subcategorías NOTA:" ESTO NO ES PARA MENUS, ES PARA "TAXONOMIAS"-->
+		<fieldset>
+			<legend>Opciones por número y letras</legend>
+
+			<label for="misopciones">Opciones</label>
+			<select name="opciones" id="misopciones" >
+				<optgroup label="Números">
+					<option value="opcion1">Opción 1</option>
+					<option value="opcion2">Opción 2</option>
+					<option value="opcion3">Opción 3</option>
+					<option value="opcion4">Opción 4</option>
+					<option value="opcion5">Opción 5</option>
+				</optgroup>
+
+				<optgroup label="Alfabeto">
+					<option value="opcionA">Opción A</option>
+					<option value="opcionB">Opción B</option>
+					<option value="opcionC">Opción C</option>
+					<option value="opcionD">Opción D</option>
+					<option value="opcionE">Opción E</option>
+				</optgroup>
+			</select>
+
+		</fieldset>
+
+		<label for="foto">Sube un archivo:</label>
+	    <input type="file" name="archivosubido" id="foto">
+	    
+
+
+		<input type="submit" name="enviar" value="Enviar"  class="boton">
+		<input type="submit" formaction="mailto:cursohuetor29@gmail.com" value="Nuevo action por atributo">
+
+		<input type="reset" name="borrar" value="Eliminar" class="boton">
+
+		<input type="image" name="enviar" src="playa.jpg" width="70px" height="auto" class="boton">
+
+		<input type="button" name="boton" value="Botón"  onclick="javascript:alert('Has hecho click con el botón');" class="boton">
+		
+		<input type="button" name="boton" value="Botón"  onmousedown="javascript:alert('Has pulsado el botón con mouse');" class="boton">
+		
+		<input type="button" name="boton" value="Botón"  ondblclick="javascript:alert('Has pulsado el botón doble click');" class="boton">
+		<br>
+		
+
+
+
+
+
+		<!--<fieldset>
+			<legend>Varios con jquery</legend>
+		<label for="mideslizador">Edad</label>
+		<input type="range" name="deslizador" id="mideslizador" value="25" min="18" max="90" />
+		
+
+		<select name="interruptor" id="miinterruptor">
+		<option value="off">off</option>
+		<option value="on">on</option>
+		</select>
+		</fieldset>
+		-->
+	</form>
+
+
+</body>
+</html>
